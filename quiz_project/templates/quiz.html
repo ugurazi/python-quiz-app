@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form method="POST" action="/submit">
+        <!-- Question about the user's name -->
+        <h2>Soru 1:E-posta adresiniz nedir? </h2>
+        <input type="email" name="email" required>
+
+        <!-- First question with multiple choice -->
+        <h2>Soru 2: Python'da makine öğrenmesi modelleri geliştirmek için hangi kütüphane yaygın olarak kullanılır?</h2>
+        <input type="radio" name="question1" value="a"> Scikit-learn<br>
+        <input type="radio" name="question1" value="b"> NumPy<br>
+        <input type="radio" name="question1" value="c"> Flask<br>
+
+        <!-- Second question with multiple choice -->
+        <h2>Soru 3: Derin öğrenme modellerini eğitmek için hangi framework yaygın olarak kullanılır?</h2>
+        <input type="radio" name="question2" value="a"> Pandas <br>
+        <input type="radio" name="question2" value="b"> Django<br>
+        <input type="radio" name="question2" value="c"> TensorFlow<br>
+
+        <h2>Soru 4: Yapay zeka modellerini eğitirken veri setini eğitim ve test seti olarak ayırmanın amacı nedir?</h2>
+        <input type="radio" name="question3" value="a"> Modelin genelleme yapabilme kabiliyetini test etmek <br>
+        <input type="radio" name="question3" value="b">  Modeli daha hızlı eğitmek<br>
+        <input type="radio" name="question3" value="c"> Eğitim süresini uzatmak<br>
+
+        <h2>Soru 5: Bir yapay zeka modelinin performansını değerlendirirken hangi metrik, sınıflandırma problemlerinde en yaygın olarak kullanılır?</h2>
+        <input type="radio" name="question4" value="a"> RMSE (Root Mean Squared Error) <br>
+        <input type="radio" name="question4" value="b"> A/B Testi <br>
+        <input type="radio" name="question4" value="c">  Accuracy <br>
+
+        <br>
+        <button type="submit">Submit answers</button>
+
+        {% if score is not none %}
+        <h2>Skorunuz: {{score}}%</h2>
+        {% endif %}
+
+        <!-- User's best score in the top right corner -->
+        <div style="position: absolute; top: 10px; right: 10px;">
+            <p>Best Score: {% if best_score is not none%}{{ best_score }}%{%else%} Henüz skor yok {%endif %}</p>
+        </div>
+    </form>
+
+    <!-- Footer with information about the author -->
+    <footer>
+        Developer: Ugur Emir Azi
+    </footer>
+</body>
+</html>
